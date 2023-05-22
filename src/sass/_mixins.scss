@@ -1,0 +1,40 @@
+@import './variables';
+
+@mixin call-to-action-btn() {
+  position: relative;
+  font-family: 'Anek Gujarati', sans-serif;
+  font-size: 21px;
+  line-height: 18px;
+  font-weight: 800;
+  color: $color-primary;
+  margin: 0;
+  padding: 0.7rem 1.2rem;
+  background-image: linear-gradient(to left bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #86a4e9, #71aded, #5cb5ee, #32beec, #00c5e4, #00ccd7, #1bd1c5);
+  border: 0;
+  border-radius: 1.2rem;
+  cursor: pointer;
+  z-index: 2;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "Let's Browse";
+    inset: 0;
+    border: 0;
+    border-radius: 1.2rem;
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #86a4e9, #71aded, #5cb5ee, #32beec, #00c5e4, #00ccd7, #1bd1c5);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s linear;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}

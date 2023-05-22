@@ -1,0 +1,52 @@
+@import '../../../sass/variables';
+
+.navbar-component {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+
+  &__logo {
+    text-decoration: none;
+    color: $color-primary;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__navbar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    a {
+      color: $color-secondary;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.4s;
+
+      &:hover {
+        color: $color-primary;
+        text-decoration: underline;
+      }
+    }
+
+    &--search {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.4s;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    .active {
+      color: $color-primary;
+    }
+  }
+}

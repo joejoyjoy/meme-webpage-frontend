@@ -1,0 +1,13 @@
+@import '../../../sass/mixins';
+
+.intro-component {
+  padding: max(25vh, 160px) 24px;
+
+  &__paragraph {
+    margin-bottom: 18px
+  }
+
+  &__action-btn {
+    @include call-to-action-btn();
+  }
+}
