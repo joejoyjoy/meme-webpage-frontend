@@ -1,3 +1,6 @@
 /* COLORS */
-$color-primary: #FFF;
-$color-secondary: rgba(#FFF, 0.6);
+$color-primary: #ffffff;
+$color-secondary: rgba($color-primary, 0.6);
+
+/* BACKGROUND COLORS */
+$background-blur-white: rgba($color-primary, 0.3);

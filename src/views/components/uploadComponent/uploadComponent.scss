@@ -1,9 +1,136 @@
+@import '../../../sass/variables';
+
 .upload-component-content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-width: 600px;
-  min-height: 450px;
-  background: rgba(#000000, 0.25);
+  min-width: 800px;
+  height: 100%;
+  max-height: 450px;
+  padding: 32px;
+  padding-bottom: 0;
+  gap: 32px;
+  background: $background-blur-white;
   border-radius: 12px;
+
+  &__head {
+    h2 {
+      font-size: 36px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    p {
+      text-align: center;
+      font-size: 18px;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 68px 1fr;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 32px;
+
+    &--gif {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding-bottom: 32px;
+      cursor: pointer;
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: $color-primary;
+        gap: 14px;
+        font-size: 24px;
+        font-weight: 600;
+
+        &--icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0 18px;
+          border: 6px solid $color-secondary;
+          border-radius: 25px;
+          color: $color-primary;
+          font-size: 56px;
+        }
+      }
+
+      &__upload-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 42px;
+        background: $background-blur-white;
+        color: $color-primary;
+        font-weight: 700;
+        opacity: 0;
+        cursor: pointer;
+        transition: opacity 0.4s;
+      }
+
+      &:hover {
+        .upload-component-content__body--gif__upload-btn {
+          opacity: 1;
+        }
+      }
+    }
+
+    hr {
+      border: 2px solid $color-primary;
+      margin: 0 auto;
+    }
+
+    &--url {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding-bottom: 32px;
+      cursor: pointer;
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: $color-primary;
+        gap: 14px;
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      &__input-btn {
+        height: 42px;
+        background: $background-blur-white;
+        padding: 0 12px;
+        color: $color-primary;
+        font-weight: 700;
+        border: 0;
+        outline: 0;
+        border-radius: 4px;
+        opacity: 0;
+        transition: opacity 0.4s;
+
+        &::placeholder {
+          color: $color-secondary;
+        }
+      }
+
+      &:hover {
+        .upload-component-content__body--url__input-btn {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
