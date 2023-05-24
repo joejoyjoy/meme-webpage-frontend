@@ -1,5 +1,6 @@
 import React from 'react'
 import './introComponent.scss'
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function IntroComponent() {
   return (
@@ -10,9 +11,17 @@ export default function IntroComponent() {
         <br />
         All in one platform and <b>available for all devices</b>.
       </p>
-      <button className="intro-component__action-btn">
+      <ScrollLink
+        to="searchResult"
+        id="action-button"
+        spy={true}
+        smooth={true}
+        offset={-80}
+        duration={500}
+        className="intro-component__action-btn"
+      >
         Let's Browse
-      </button>
+      </ScrollLink>
     </section>
   )
 }

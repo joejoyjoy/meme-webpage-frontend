@@ -1,25 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import { GifDataContext } from '../../../context/GifDataContext';
+import { useContext } from "react";
+import { SearchGifsContext } from "../../../context/SearchGifs";
 import { Link, NavLink } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
 import { CgSearch } from 'react-icons/cg';
 import './navbarComponent.scss'
 
 export default function NavbarComponent() {
-  const { gifMemes, setGifMemes } = useContext(GifDataContext);
-  const [query, setQuery] = useState("")
-
-  const handleSearch = (event) => {
-    const queryData = event.target.value;
-    setQuery(queryData);
-
-    const searchList = gifMemes.filter((item) => {
-      return item.name.toLowerCase().indexOf(queryData.toLowerCase()) !== -1;
-    });
-
-    setGifMemes(searchList);
-    console.log(gifMemes);
-  };
+  const { keyword, setKeyword, handleSearch } = useContext(SearchGifsContext);
 
   return (
     <div className="navbar-component">
@@ -43,7 +30,7 @@ export default function NavbarComponent() {
             <CgSearch size={25} />
             <input
               type="text"
-              value={query}
+              value={keyword}
               onChange={handleSearch}
               placeholder="I'm looking for..."
             />

@@ -1,7 +1,10 @@
 @import '../../../sass/mixins';
 
 .intro-component {
-  padding: max(25vh, 160px) 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 
   &__paragraph {
     margin-bottom: 18px

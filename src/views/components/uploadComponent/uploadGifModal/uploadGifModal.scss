@@ -96,6 +96,10 @@
       @include primary-button("SAVE");
       margin: 28px 0;
       text-transform: uppercase;
+
+      &::before {
+        width: auto;
+      }
     }
   }
 }

@@ -2,6 +2,7 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import useGifApi from '../../../hooks/useGifApi';
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { GifDataContext } from '../../../context/GifDataContext';
+import { SearchGifsContext } from '../../../context/SearchGifs';
 import './contentComponent.scss'
 import { TbSortDescending, TbSortAscending } from 'react-icons/tb';
 import GifPlaceholder from '../../../assets/webp/gif-placeholder.webp';
@@ -11,6 +12,7 @@ import EmptyError from '../../../assets/png/empty-error.png';
 export default function ContentComponent() {
   const { getAllGifs } = useGifApi()
   const { gifMemes, setGifMemes, getGifsOfExternalApi } = useContext(GifDataContext);
+  const { keyword, setKeyword, handleSearch } = useContext(SearchGifsContext);
   const [sortOrder, setSortOrder] = useState("ascn");
   const [gifsExternalApi, setGifsExternalApi] = useState([]);
   const [gifsExternalApiNoRepeat, setGifsExternalApiNoRepeat] = useState([]);
@@ -66,6 +68,10 @@ export default function ContentComponent() {
     );
   }
 
+  const searchGifs = sortedData().filter((p) =>
+    p.name.toString().toLowerCase().includes(keyword.toLowerCase())
+  );
+
   useEffect(() => {
     getGifsOfExternalApi().then(data => {
       setGifsExternalApi(data);
@@ -97,7 +103,7 @@ export default function ContentComponent() {
         </div>
       </section>
       <section className="content-component__grid" ref={listRef}>
-        {sortedData().map((gifMeme) => {
+        {searchGifs.map((gifMeme) => {
           return (
             <article key={gifMeme._id} className="content-component__grid--item">
               <div className="content-component__grid--item__head">
@@ -114,7 +120,7 @@ export default function ContentComponent() {
         })
         }
       </section>
-      {gifMemes.length === 0 &&
+      {gifMemes.length === 0 || searchGifs.length === 0 &&
         <span className="content-component__empty-error">
           <img src={EmptyError} alt="Empty Error Image" />
           There are no Gifs to display
