@@ -8,6 +8,6 @@
   }
 
   &__action-btn {
-    @include call-to-action-btn();
+    @include primary-button();
   }
 }

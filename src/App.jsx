@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import GifDataContextProvider from "./context/GifDataContext";
 import { RouterProvider } from "react-router-dom";
 import router from './router/router';
 
 function App() {
   return (
-    <RouterProvider
-      router={router}
-      fallbackElement={<></>}
-    />
+    <GifDataContextProvider>
+      <RouterProvider
+        router={router}
+        fallbackElement={<></>}
+      />
+    </GifDataContextProvider>
   )
 }
 

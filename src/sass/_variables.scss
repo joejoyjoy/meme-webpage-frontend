@@ -1,6 +1,13 @@
 /* COLORS */
-$color-primary: #ffffff;
+$color-primary: #fff;
 $color-secondary: rgba($color-primary, 0.6);
 
 /* BACKGROUND COLORS */
 $background-blur-white: rgba($color-primary, 0.3);
+$background-on-hover: #eaeaea;
+
+/* UPLOAD GIF MODAL */
+$primary-text-modal: #191919;
+$secondary-text-modal: #a2a2ad;
+$background-modal: #fff;
+$background-input-modal: #F8F8F9;

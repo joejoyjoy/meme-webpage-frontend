@@ -1,12 +1,27 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { message } from 'antd'
+import { GifDataContext } from '../../../context/GifDataContext';
 import './uploadComponent.scss'
 import { BsLink45Deg } from 'react-icons/bs';
 import UploadGifModal from './uploadGifModal/UploadGifModal';
 
 export default function UploadComponent() {
+  const { postGifUrl } = useContext(GifDataContext);
+  const [messageApi, contextHolder] = message.useMessage()
   const [gif, setGif] = useState({});
   const [isOpened, setIsOpened] = useState(false);
   const [gifPreview, setGifPreview] = useState("");
+  const [gifUrl, setGifUrl] = useState('');
+  const [gifName, setGifName] = useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    postGifUrl(gifName, gifUrl, messageApi)
+
+    setGifUrl('')
+    setGifName('')
+  };
 
   const addFile = (e) => {
     setGif(e.target.files[0]);
@@ -43,7 +58,29 @@ export default function UploadComponent() {
               <BsLink45Deg size={65} />
               Any URL
             </span>
-            <input type='text' className="upload-component-content__body--url__input-btn" placeholder="Enter any media url ending on GIF" />
+            <form onSubmit={handleSubmit} className="upload-component-content__body--url__input-btn" >
+              <input
+                type="url"
+                id="gif-url"
+                name="gif-url"
+                value={gifUrl}
+                onChange={e => setGifUrl(e.target.value)}
+                autoComplete="off"
+                placeholder="Enter any media url ending on GIF"
+              />
+              <span className="upload-component-content__body--url__submit" >
+                <input
+                  type="text"
+                  id="gif-name"
+                  name="gif-name"
+                  value={gifName}
+                  onChange={e => setGifName(e.target.value)}
+                  autoComplete="off"
+                  placeholder="Enter GIF name"
+                />
+                <button type="submit">Submit</button>
+              </span>
+            </form>
           </section>
         </div>
       </div>
@@ -53,6 +90,7 @@ export default function UploadComponent() {
         gifPreview={gifPreview}
         onClose={() => setIsOpened(false)}
       />
+      {contextHolder}
     </>
   )
 }
