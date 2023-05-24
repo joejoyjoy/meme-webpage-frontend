@@ -1,9 +1,21 @@
+import { useContext, useEffect } from 'react';
+import useGifApi from '../../../hooks/useGifApi';
+import { GifDataContext } from '../../../context/GifDataContext';
 import './contentComponent.scss'
 import { BsDot } from 'react-icons/bs';
 import GifPlaceholder from '../../../assets/webp/gif-placeholder.webp';
 import UserPlaceholder from '../../../assets/webp/user-placeholder.webp'
 
 export default function ContentComponent() {
+  const { getAllGifs } = useGifApi()
+  const { gifMemes, setGifMemes } = useContext(GifDataContext);
+
+  useEffect(() => {
+    getAllGifs().then(allGifs => {
+      setGifMemes(allGifs)
+    })
+  }, [])
+
   return (
     <div className="content-component">
       <section className="content-component__head">
@@ -24,16 +36,22 @@ export default function ContentComponent() {
         </div>
       </section>
       <section className="content-component__grid">
-        <article className="content-component__grid--item">
-          <div className="content-component__grid--item__head">
-            <img src={UserPlaceholder} alt="User Placeholder" />
-            <div className="content-component__grid--item__head--user">
-              <p>User name</p>
-              <span>22 May 2023</span>
-            </div>
-          </div>
-          <img src={GifPlaceholder} alt="Gif Placeholder" className="content-component__grid--item__image"/>
-        </article>
+        {Array.isArray(gifMemes) &&
+          gifMemes.map(gifMeme => {
+            return (
+              <article key={gifMeme._id} className="content-component__grid--item">
+                <div className="content-component__grid--item__head">
+                  <img src={UserPlaceholder} alt="User Placeholder" />
+                  <div className="content-component__grid--item__head--user">
+                    <p>User name</p>
+                    <span>22 May 2023</span>
+                  </div>
+                </div>
+                <img src={gifMeme?.imageUrl ? gifMeme.imageUrl : GifPlaceholder} alt="Gif Placeholder" className="content-component__grid--item__image" />
+              </article>
+            );
+          })
+        }
       </section>
     </div>
   )

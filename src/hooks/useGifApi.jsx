@@ -1,6 +1,19 @@
 export default function useGifApi() {
   const { VITE_SERVER_URL } = import.meta.env
 
+  const getAllGifs = async () => {
+    try {
+      const response = await fetch(`${VITE_SERVER_URL}/gif/gifs`)
+      const data = await response.json()
+
+      console.log(data.allGifs);
+      return data.allGifs;
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   const addGif = async (name) => {
     try {
       const response = await fetch(`${VITE_SERVER_URL}/gif/create-gif/${name}`, {
@@ -72,6 +85,7 @@ export default function useGifApi() {
   }
 
   return {
+    getAllGifs,
     addGif,
     updateGifImage,
     putGifImage
