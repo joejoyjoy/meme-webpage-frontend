@@ -1,52 +1,86 @@
 @import '../../../sass/variables';
 
 .navbar-component {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: rgba(#FFF, 0.08);
+  backdrop-filter: blur(10px);
+  z-index: 10;
 
-  &__logo {
-    text-decoration: none;
-    color: $color-primary;
-    cursor: pointer;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  &__navbar {
+  &--content {
     display: flex;
+    width: 976px;
+    justify-content: space-between;
     align-items: center;
-    gap: 24px;
+    padding: 24px 0;
+    margin: 0 auto;
 
-    a {
-      color: $color-secondary;
+    &__logo {
       text-decoration: none;
+      color: $color-primary;
       cursor: pointer;
-      transition: all 0.4s;
 
       &:hover {
-        color: $color-primary;
         text-decoration: underline;
       }
     }
 
-    &--search {
+    &__navbar {
       display: flex;
       align-items: center;
-      cursor: pointer;
-      transition: all 0.4s;
+      gap: 24px;
 
-      &:hover {
+      &--upload {
+        color: $color-secondary;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.4s;
+
+        &:hover {
+          color: $color-primary;
+          text-decoration: underline;
+        }
+      }
+
+      &--search {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        cursor: pointer;
+        transition: all 0.4s;
+
+        &:hover {
+          color: $color-primary;
+        }
+
+        input {
+          width: 0px;
+          padding: 14px 0;
+          color: $color-primary;
+          font-size: 16px;
+          font-weight: 400;
+          background:none;
+          border: 0;
+          outline: 0;
+          transition: width 0.8s;
+
+          &::placeholder {
+            color: $color-secondary;
+          }
+        }
+      }
+
+      .active {
         color: $color-primary;
       }
     }
+  }
+}
 
-    .active {
-      color: $color-primary;
-    }
+#searchButton.active {
+  input {
+    width: 230px;
+    border-bottom: 3px solid $color-primary;
   }
 }

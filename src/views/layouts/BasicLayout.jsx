@@ -1,13 +1,12 @@
-import { Suspense, lazy } from "react";
 import { Outlet } from 'react-router-dom'
-const Navbar = lazy(() => import('../components/navbarComponent/navbarComponent'));
+import NavbarComponent from "../components/navbarComponent/NavbarComponent";
 
 const BasicLayout = () => {
   return (
-    <Suspense fallback={<></>}>
-      <Navbar />
+    <>
+      <NavbarComponent />
       <Outlet />
-    </Suspense>
+    </>
   )
 }
 

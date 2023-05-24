@@ -43,7 +43,22 @@ export default function GifDataContextProvider(props) {
     }
   }
 
-  const value = { gifMemes, setGifMemes, postGifFile, postGifUrl }
+  const getGifsOfExternalApi = async () => {
+    const { VITE_GIPHY_API_KEY } = import.meta.env
+    const giphyUrl = `https://api.giphy.com/v1/gifs/trending?api_key=${VITE_GIPHY_API_KEY}&limit=25&rating=g`;
+
+    try {
+      const response = await fetch(giphyUrl)
+      const data = await response.json()
+
+      return data.data;
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const value = { gifMemes, setGifMemes, postGifFile, postGifUrl, getGifsOfExternalApi }
 
   return (
     <GifDataContext.Provider value={value}>

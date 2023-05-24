@@ -6,7 +6,6 @@ export default function useGifApi() {
       const response = await fetch(`${VITE_SERVER_URL}/gif/gifs`)
       const data = await response.json()
 
-      console.log(data.allGifs);
       return data.allGifs;
 
     } catch (error) {
@@ -75,8 +74,8 @@ export default function useGifApi() {
           imageUrl: url
         })
       })
+      
       const data = await response.json()
-      console.log(data);
       return data
 
     } catch (err) {

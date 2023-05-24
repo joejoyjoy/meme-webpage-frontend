@@ -26,7 +26,8 @@ body {
     radial-gradient(at 0% 0%, hsla(344, 97%, 58%, 1) 0px, transparent 50%),
     radial-gradient(at 100% 100%, hsla(325, 96%, 51%, 1) 0px, transparent 50%),
     radial-gradient(at 100% 0%, hsla(300, 45%, 36%, 1) 0px, transparent 50%);
-  
+  background-attachment: fixed;
+
 }
 
 #root {

@@ -1,4 +1,5 @@
 @import '../../../sass/variables';
+@import '../../../sass/mixins';
 
 .content-component {
 
@@ -72,11 +73,81 @@
 
       &__image {
         display: block;
-        width: 100%;
+        width: 90%;
         max-height: 500px;
         border-radius: 12px;
         max-width: 100%;
+        margin: 0 auto;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+        filter: drop-shadow(0px 0px 5px rgba(#000, 0.8));
+        line-height: 0;
+        text-indent: -999em;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+          background-image: url('../../../assets/webp/gif-placeholder.webp');
+          background-position: center;
+          background-size: cover;
+          padding: 50% 0;
+          position: relative;
+        }
+      }
+
+      &__name {
+        display: block;
+        width: 100%;
+        margin: 10px auto 18px;
+        text-align: center;
+        font-family: 'Anek Gujarati', sans-serif;
+        font-size: 21px;
+        font-weight: 600;
+        color: $color-primary;
+        height: 30px;
+        overflow: hidden;
       }
     }
+  }
+
+  &__empty-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 80px 0;
+  }
+
+  &__giphy {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 75px 0 24px;
+
+    &--title {
+      font-size: 23px;
+      font-weight: 700;
+      color: $color-primary;
+    }
+  }
+}
+
+.sort-button-aZ {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: 0;
+  min-width: 74px;
+  cursor: pointer;
+
+  p {
+    font-size: 18px;
+    color: $color-secondary;
+  }
+
+  svg {
+    color: $color-secondary;
   }
 }
