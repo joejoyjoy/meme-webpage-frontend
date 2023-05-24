@@ -60,7 +60,7 @@ export default function UploadComponent() {
             </span>
             <form onSubmit={handleSubmit} className="upload-component-content__body--url__input-btn" >
               <input
-                type="url"
+                type="text"
                 id="gif-url"
                 name="gif-url"
                 value={gifUrl}

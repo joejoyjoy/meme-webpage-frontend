@@ -3,6 +3,7 @@ import useGifApi from '../../../hooks/useGifApi';
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { GifDataContext } from '../../../context/GifDataContext';
 import { SearchGifsContext } from '../../../context/SearchGifs';
+import CopyUrl from '../copyUrl/CopyUrl';
 import './contentComponent.scss'
 import { TbSortDescending, TbSortAscending } from 'react-icons/tb';
 import GifPlaceholder from '../../../assets/webp/gif-placeholder.webp';
@@ -12,7 +13,7 @@ import EmptyError from '../../../assets/png/empty-error.png';
 export default function ContentComponent() {
   const { getAllGifs } = useGifApi()
   const { gifMemes, setGifMemes, getGifsOfExternalApi } = useContext(GifDataContext);
-  const { keyword, setKeyword, handleSearch } = useContext(SearchGifsContext);
+  const { keyword } = useContext(SearchGifsContext);
   const [sortOrder, setSortOrder] = useState("ascn");
   const [gifsExternalApi, setGifsExternalApi] = useState([]);
   const [gifsExternalApiNoRepeat, setGifsExternalApiNoRepeat] = useState([]);
@@ -55,13 +56,13 @@ export default function ContentComponent() {
       >
         {sortOrder === "desc" ?
           <>
-            <TbSortAscending size={21} />
-            <p>New</p>
+            <TbSortDescending size={21} />
+            <p>Z-A</p>
           </>
           :
           <>
-            <TbSortDescending size={21} />
-            <p>Old</p>
+            <TbSortAscending size={21} />
+            <p>A-Z</p>
           </>
         }
       </button>
@@ -112,6 +113,7 @@ export default function ContentComponent() {
                   <p>User name</p>
                   <span>{`${formatter.format(Date.parse(gifMeme.createdAt))} at ${gifMeme.createdAt.substring(11, 16)} o'clock`}</span>
                 </div>
+                <CopyUrl gifUrl={gifMeme?.imageUrl ? gifMeme.imageUrl : location.href} />
               </div>
               <img src={gifMeme?.imageUrl ? gifMeme.imageUrl : GifPlaceholder} alt={gifMeme.name} className="content-component__grid--item__image" />
               <span className="content-component__grid--item__name">{gifMeme.name}</span>
@@ -139,6 +141,7 @@ export default function ContentComponent() {
                   <p>{gifMeme.user ? gifMeme.user.username : "Anonymous user"}</p>
                   <span>{`${formatter.format(Date.parse(gifMeme.import_datetime))} at ${gifMeme.import_datetime.substring(11, 16)} o'clock`}</span>
                 </div>
+                <CopyUrl gifUrl={gifMeme.images.original.webp} />
               </div>
               <img src={gifMeme.images.original.webp} alt={gifMeme.title} className="content-component__grid--item__image" />
               <span className="content-component__grid--item__name">{gifMeme.title}</span>

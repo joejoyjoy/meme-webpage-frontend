@@ -6,7 +6,7 @@ import { CgSearch } from 'react-icons/cg';
 import './navbarComponent.scss'
 
 export default function NavbarComponent() {
-  const { keyword, setKeyword, handleSearch } = useContext(SearchGifsContext);
+  const { keyword, handleSearch } = useContext(SearchGifsContext);
 
   return (
     <div className="navbar-component">

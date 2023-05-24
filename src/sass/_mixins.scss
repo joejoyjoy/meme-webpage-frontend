@@ -1,5 +1,28 @@
 @import './variables';
 
+@mixin simple-btn-with-hover() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-primary);
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.4s;
+
+  svg {
+    height: 18px;
+    width: 18px;
+  }
+
+  &:hover {
+    background-color: $background-on-hover;
+  }
+}
+
 @mixin primary-button($content: "Let's Browse") {
   position: relative;
   display: flex;
@@ -42,28 +65,5 @@
 
   &:hover::before {
     opacity: 1;
-  }
-}
-
-@mixin simple-btn-with-hover() {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--color-primary);
-  background: none;
-  border: 0;
-  margin: 0;
-  padding: 18px;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: all 0.4s;
-
-  svg {
-    height: 18px;
-    width: 18px;
-  }
-
-  &:hover {
-    background-color: $background-on-hover;
   }
 }

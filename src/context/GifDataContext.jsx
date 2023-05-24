@@ -10,6 +10,8 @@ export default function GifDataContextProvider(props) {
   const postGifFile = async (data, messageApi) => {
     messageApi.open({ type: 'loading', content: `Publishing uploaded GIF`, duration: 0 })
 
+    console.log(data.gif);
+
     try {
       const postGifFile = await useGifApi().addGif(data.name)
 
@@ -25,21 +27,25 @@ export default function GifDataContextProvider(props) {
     }
   }
 
-  const postGifUrl = async (gifName, gifUrl, messageApi) => {
-    messageApi.open({ type: 'loading', content: `Publishing created GIF`, duration: 0 })
+  const postGifUrl = async (gifName, gifUrl) => {
 
     try {
+      const validateUrl = await fetch(gifUrl, { method: 'HEAD' }).then(res => {
+        return res.headers.get('Content-Type').startsWith('image')
+      })
+
+      if (!validateUrl) return message.error(`Provided url is not a image`);
+
       const postGifUrl = await useGifApi().addGif(gifName)
 
       const postGifContent = await useGifApi().putGifImage(postGifUrl?.data._id, gifUrl)
 
       if (postGifContent.status === 200) {
-        messageApi.destroy()
-        message.success(`Gif '${data.name}' created successfully!`)
+        message.success(`Gif '${postGifUrl?.data.name}' created successfully!`)
       }
 
     } catch (err) {
-      message.success(`Gif '${data.name}' created successfully!`)
+      console.error(err);
     }
   }
 

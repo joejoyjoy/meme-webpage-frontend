@@ -1,0 +1,19 @@
+@import '../../../sass/variables';
+@import '../../../sass/mixins';
+
+.copy-url-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  margin: 0;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.4s;
+
+  svg {
+    height: 16px;
+    width: 16px;
+  }
+}
