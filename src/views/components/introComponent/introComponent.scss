@@ -1,16 +1,25 @@
 @import '../../../sass/mixins';
 
 .intro-component {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100vh;
+  pointer-events: none;
+
+  h2 {
+    z-index: 20;
+  }
 
   &__paragraph {
-    margin-bottom: 18px
+    margin-bottom: 18px;
+    z-index: 20;
   }
 
   &__action-btn {
     @include primary-button();
+    z-index: 20;
+    pointer-events: auto;
   }
 }
