@@ -10,14 +10,12 @@ export default function GifDataContextProvider(props) {
   const postGifFile = async (data, messageApi) => {
     messageApi.open({ type: 'loading', content: `Publishing uploaded GIF`, duration: 0 })
 
-    console.log(data.gif);
-
     try {
       const postGifFile = await useGifApi().addGif(data.name)
 
       const postGifContent = await useGifApi().updateGifImage(postGifFile.data._id, data.gif)
 
-      if (postGifContent.status === 200) {
+      if (postGifContent?.status === 200) {
         messageApi.destroy()
         message.success(`Gif '${data.name}' created successfully!`)
       }
@@ -40,7 +38,7 @@ export default function GifDataContextProvider(props) {
 
       const postGifContent = await useGifApi().putGifImage(postGifUrl?.data._id, gifUrl)
 
-      if (postGifContent.status === 200) {
+      if (postGifContent?.status === 200) {
         message.success(`Gif '${postGifUrl?.data.name}' created successfully!`)
       }
 
