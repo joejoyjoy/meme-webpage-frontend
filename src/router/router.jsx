@@ -2,7 +2,7 @@ import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 // LAYOUT
-const BasicLayout = lazy(() => import('../views/layouts/basicLayout'));
+const BasicLayout = lazy(() => import('../views/layouts/BasicLayout'));
 
 // PAGES
 const HomePage = lazy(() => import('../views/pages/homePage/HomePage'));
