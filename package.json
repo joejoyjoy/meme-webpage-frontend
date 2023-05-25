@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.6",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^0.9.342",
     "antd": "^5.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
