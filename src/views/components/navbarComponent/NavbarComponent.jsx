@@ -16,8 +16,6 @@ export const usePathname = () => {
 export default function NavbarComponent() {
   const { keyword, handleSearch } = useContext(SearchGifsContext);
 
-  console.log(usePathname());
-
   return (
     <div className="navbar-component">
       <div className="navbar-component--content">
