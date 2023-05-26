@@ -108,11 +108,13 @@ export default function ContentComponent() {
           return (
             <article key={gifMeme._id} className="content-component__grid--item">
               <div className="content-component__grid--item__head">
-                <img src={UserPlaceholder} alt="User Placeholder" />
-                <div className="content-component__grid--item__head--user">
-                  <p>User name</p>
-                  <span>{`${formatter.format(Date.parse(gifMeme.createdAt))} at ${gifMeme.createdAt.substring(11, 16)} o'clock`}</span>
-                </div>
+                <span className="content-component__grid--item__head--content">
+                  <img src={UserPlaceholder} alt="User Placeholder" />
+                  <div className="content-component__grid--item__head--content__user">
+                    <p>User name</p>
+                    <span>{`${formatter.format(Date.parse(gifMeme.createdAt))} at ${gifMeme.createdAt.substring(11, 16)} o'clock`}</span>
+                  </div>
+                </span>
                 <CopyUrl gifUrl={gifMeme?.imageUrl ? gifMeme.imageUrl : location.href} />
               </div>
               <img src={gifMeme?.imageUrl ? gifMeme.imageUrl : GifPlaceholder} alt={gifMeme.name} className="content-component__grid--item__image" />
@@ -136,11 +138,13 @@ export default function ContentComponent() {
           return (
             <article key={gifMeme.id} className="content-component__grid--item">
               <div className="content-component__grid--item__head">
-                <img src={gifMeme.user ? gifMeme.user.avatar_url : UserPlaceholder} alt="Gif uploader avatar" />
-                <div className="content-component__grid--item__head--user">
-                  <p>{gifMeme.user ? gifMeme.user.username : "Anonymous user"}</p>
-                  <span>{`${formatter.format(Date.parse(gifMeme.import_datetime))} at ${gifMeme.import_datetime.substring(11, 16)} o'clock`}</span>
-                </div>
+                <span className="content-component__grid--item__head--content">
+                  <img src={gifMeme.user ? gifMeme.user.avatar_url : UserPlaceholder} alt="Gif uploader avatar" />
+                  <div className="content-component__grid--item__head--content__user">
+                    <p>{gifMeme.user ? gifMeme.user.username : "Anonymous user"}</p>
+                    <span>{`${formatter.format(Date.parse(gifMeme.import_datetime))} at ${gifMeme.import_datetime.substring(11, 16)} o'clock`}</span>
+                  </div>
+                </span>
                 <CopyUrl gifUrl={gifMeme.images.original.webp} />
               </div>
               <img src={gifMeme.images.original.webp} alt={gifMeme.title} className="content-component__grid--item__image" />

@@ -10,11 +10,19 @@
 
   &--content {
     display: flex;
-    width: 976px;
+    max-width: 976px;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 0;
+    padding: 24px;
     margin: 0 auto;
+
+    @media (max-width: 1024px) {
+      padding: 12px 24px;
+    }
+
+    @media (max-width: 710px) {
+      padding: 12px;
+    }
 
     &__logo {
       text-decoration: none;
@@ -34,12 +42,19 @@
       &--upload {
         color: $color-secondary;
         text-decoration: none;
+        height: 49px;
+        display: flex;
+        align-items: center;
         cursor: pointer;
         transition: all 0.4s;
 
         &:hover {
           color: $color-primary;
           text-decoration: underline;
+        }
+
+        @media (max-width: 1024px) {
+          height: 33px;
         }
       }
 
@@ -60,13 +75,27 @@
           color: $color-primary;
           font-size: 16px;
           font-weight: 400;
-          background:none;
+          background: none;
           border: 0;
           outline: 0;
           transition: width 0.8s;
 
+          @media (max-width: 1024px) {
+            width: 120px;
+            border-bottom: 3px solid $color-primary;
+            padding: 8px 0;
+            font-size: 13px;
+          }
+
           &::placeholder {
             color: $color-secondary;
+          }
+        }
+
+        @media (max-width: 1024px) {
+          svg {
+            width: 18px;
+            height: 18px;
           }
         }
       }
@@ -82,5 +111,9 @@
   input {
     width: 230px;
     border-bottom: 3px solid $color-primary;
+
+    @media (max-width: 1024px) {
+      width: 120px;
+    }
   }
 }

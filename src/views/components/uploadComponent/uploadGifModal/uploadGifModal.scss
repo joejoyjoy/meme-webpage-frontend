@@ -10,13 +10,18 @@
 }
 
 .modal-upload-gif {
-  width: 100%;
+  width: auto;
   max-width: 800px;
   border: none !important;
   border-radius: 8px;
   background: $background-modal;
   padding: 34px;
   transition: all 0.4s;
+
+  @media (max-width: 885px) {
+    margin: auto 8px;
+    padding: 24px;
+  }
 
   &::backdrop {
     background-color: rgba(#000, .45);
@@ -42,12 +47,26 @@
       width: 100%;
       margin-top: 40px;
 
+      @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
       img {
         height: 200px;
         aspect-ratio: 3 / 2;
         object-fit: cover;
         border-radius: 4px;
         box-shadow: 0 1px 6px rgba(25, 25, 34, .16);
+
+        @media (max-width: 750px) {
+          height: 140px;
+        }
+
+        @media (max-width: 600px) {
+          height: 100px;
+          width: max-content;
+        }
       }
 
       &--content {
@@ -63,6 +82,11 @@
           line-height: 24px;
           margin: 0;
           color: $primary-text-modal;
+
+          @media (max-width: 670px) {
+            font-size: 24px;
+            line-height: 20px;
+          }
         }
 
         &__name-input {

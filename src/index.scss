@@ -67,3 +67,34 @@ b {
   font-size: 24px;
   margin: 0;
 }
+
+@media (max-width: 710px) {
+  #root {
+    padding: 8px;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 21px;
+    line-height: 18px;
+  }
+
+  h2 {
+    font-size: 38px;
+    line-height: 36px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  b {
+    font-size: 15px;
+  }
+}

@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 800px;
+  width: 100%;
+  max-width: 800px;
   height: 100%;
   max-height: 450px;
   padding: 32px;
@@ -13,6 +14,11 @@
   background: $background-blur-white;
   border-radius: 12px;
 
+  @media (max-width: 600px) {
+    max-height: 100%;
+    margin-bottom: 8px;
+  }
+
   &__head {
     h2 {
       font-size: 36px;
@@ -20,11 +26,19 @@
       font-weight: 500;
       text-align: center;
       margin-bottom: 12px;
+
+      @media (max-width: 600px) {
+        font-size: 21px;
+      }
     }
 
     p {
       text-align: center;
       font-size: 18px;
+
+      @media (max-width: 600px) {
+        font-size: 13px;
+      }
     }
   }
 
@@ -34,6 +48,11 @@
     width: 100%;
     height: 100%;
     padding-bottom: 32px;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
 
     &--gif {
       display: flex;
@@ -52,6 +71,10 @@
         gap: 14px;
         font-size: 24px;
         font-weight: 600;
+
+        @media (max-width: 600px) {
+          font-size: 15px;
+        }
 
         &--icon {
           display: flex;
@@ -80,6 +103,11 @@
     hr {
       border: 2px solid $color-primary;
       margin: 0 auto;
+
+      @media (max-width: 600px) {
+        width: 100%;
+        margin-top: 50px;
+      }
     }
 
     &--url {
@@ -99,6 +127,10 @@
         gap: 14px;
         font-size: 24px;
         font-weight: 600;
+
+        @media (max-width: 600px) {
+          font-size: 15px;
+        }
       }
 
       &__input-btn {
