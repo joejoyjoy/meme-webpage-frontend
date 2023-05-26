@@ -39,6 +39,10 @@
       align-items: center;
       gap: 24px;
 
+      @media (max-width: 490px) {
+        gap: 12px;
+      }
+
       &--upload {
         color: $color-secondary;
         text-decoration: none;
@@ -67,6 +71,10 @@
 
         &:hover {
           color: $color-primary;
+        }
+
+        @media (max-width: 490px) {
+          gap: 12px;
         }
 
         input {
