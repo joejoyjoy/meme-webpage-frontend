@@ -1,21 +1,12 @@
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense } from 'react'
 import IntroComponent from '../../components/introComponent/IntroComponent'
 import ContentComponent from '../../components/contentComponent/ContentComponent'
 import SplineAssets from '../../components/splineAssets/SplineAssets'
+import useWindowSizeReport from '../../../hooks/useWindowSizeReport'
 import './homePage.scss'
 
 export default function HomePage() {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", changeWidth)
-
-    return () => {
-      window.removeEventListener("resize", changeWidth)
-    }
-  }, [])
+  const [screenWidth] = useWindowSizeReport();
 
   return (
     <Suspense fallback={<></>}>
