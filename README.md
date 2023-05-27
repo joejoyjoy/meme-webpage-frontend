@@ -56,6 +56,12 @@ I have used the following technologies and dependencies for the development of t
 Integration of a GIPHY API for fetching additional multimedia content.
 Use of AntDesign, auto-animate formkit, react-scroll for advanced UI components and functionality.
 
+## Deploy version
+#### Just want to see the project in action?
+Good news! There is a deployed version available for everyone.
+Go to [meme-gifs-page.netlify.app](https://meme-gifs-page.netlify.app) and see the project in action!
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3d69f893-c43e-4d90-bd09-e7ef72aa37ed/deploy-status)](https://app.netlify.com/sites/meme-gifs-page/deploys)
+
 ## Creator ✨
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
