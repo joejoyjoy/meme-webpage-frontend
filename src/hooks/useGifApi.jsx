@@ -3,9 +3,7 @@ export default function useGifApi() {
 
   const getAllGifs = async () => {
     try {
-      const response = await fetch(`${VITE_SERVER_URL}/gif/gifs`, {
-        headers: { 'access-control-allow-origin': '*' },
-      })
+      const response = await fetch(`${VITE_SERVER_URL}/gif/gifs`)
       const data = await response.json()
 
       return data.allGifs;
